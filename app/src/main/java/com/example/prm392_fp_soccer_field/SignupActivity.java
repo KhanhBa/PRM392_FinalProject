@@ -26,7 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up); // Đảm bảo tên tệp XML khớp
+        setContentView(R.layout.activity_sign_up);
 
         // Khởi tạo các view
         edtEmail = findViewById(R.id.edtEmail);
@@ -41,13 +41,13 @@ public class SignupActivity extends AppCompatActivity {
         // Khởi tạo FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 
-        // Xử lý sự kiện nhấp vào "Sign In" để chuyển về SigninActivity
+
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, SigninActivity.class);
                 startActivity(intent);
-                finish(); // Kết thúc Activity hiện tại nếu không cần quay lại
+                finish();
             }
         });
 
@@ -55,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edtEmail.getText().toString().trim(); // Sửa lại để lấy email
+                String email = edtEmail.getText().toString().trim();
                 String username = edtUsername.getText().toString().trim();
                 String password = edtPassword.getText().toString();
                 String confirmPassword = edtConfirmPassword.getText().toString();
@@ -97,15 +97,15 @@ public class SignupActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Đăng ký thành công
+
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                        // Điều hướng đến màn hình chính hoặc trang đăng nhập
+
                         Intent intent = new Intent(SignupActivity.this, MainActivity.class); // Ví dụ: MainActivity là trang chính
                         startActivity(intent);
-                        finish(); // Kết thúc trang đăng ký
+                        finish();
                     } else {
-                        // Đăng ký thất bại
+
                         Toast.makeText(SignupActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -120,7 +120,7 @@ public class SignupActivity extends AppCompatActivity {
             editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             imageView.setImageResource(R.drawable.baseline_visibility_off_24);
         }
-        // Đặt con trỏ về cuối văn bản sau khi thay đổi kiểu input
+
         editText.setSelection(editText.getText().length());
     }
 }

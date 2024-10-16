@@ -88,7 +88,7 @@ public class SigninActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
                 startActivity(intent);
-                finish(); // Kết thúc activity hiện tại nếu không cần quay lại
+                finish();
             }
         });
     }
@@ -98,11 +98,11 @@ public class SigninActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Đăng nhập thành công, điều hướng người dùng tới màn hình chính
+
                         Toast.makeText(SigninActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
                         // Ví dụ: startActivity(new Intent(SigninActivity.this, MainActivity.class));
                     } else {
-                        // Đăng nhập thất bại, hiển thị lỗi
+
                         Toast.makeText(SigninActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     }
                 });
