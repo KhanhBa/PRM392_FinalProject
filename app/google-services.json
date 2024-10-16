@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981009550619",
+    "project_id": "prm392-fp",
+    "storage_bucket": "prm392-fp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981009550619:android:a915c34f0626879c3c97be",
+        "android_client_info": {
+          "package_name": "com.example.prm392_fp_soccer_field"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyt8jeMI8DS3LtsYwt3yN2HgyLWaR1JHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

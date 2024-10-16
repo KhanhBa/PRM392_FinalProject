@@ -49,6 +49,24 @@
                 android:layout_gravity="center"
                 android:textSize="18dp" />
 
+            <!-- Email Field -->
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edittext_background"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:drawablePadding="13dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:textColorHint="#80000000" />
+
             <EditText
                 android:id="@+id/edtUsername2"
                 android:layout_width="300dp"
@@ -175,7 +193,6 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <!-- Thay đổi liên kết dưới thành "Don't have an account?" -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -188,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Sign In"
+                    android:text="Sign Up"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF" />
