@@ -1,5 +1,7 @@
 package com.example.prm392_fp_soccer_field;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +12,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SigninActivity extends AppCompatActivity {
 
     private EditText edtUsername, edtPassword;
     private ImageView ivEye1;
     private Button btnSignIn;
     private TextView tvSignUp;
-
+    private FirebaseAuth mAuth;
     private boolean isPasswordVisible = false;
 
     @SuppressLint("MissingInflatedId")
@@ -24,12 +28,16 @@ public class SigninActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
         // Ánh xạ các thành phần giao diện từ XML
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
         ivEye1 = findViewById(R.id.ivEye1);
         btnSignIn = findViewById(R.id.btnSignIn);
         tvSignUp = findViewById(R.id.tvSignUp);
+
+        // Khởi tạo FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
 
         // Xử lý sự kiện khi nhấn vào icon con mắt để ẩn/hiện mật khẩu
         ivEye1.setOnClickListener(new View.OnClickListener() {
@@ -69,20 +77,34 @@ public class SigninActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Xử lý logic đăng nhập ở đây
-                Toast.makeText(SigninActivity.this, "Signing in...", Toast.LENGTH_SHORT).show();
-                // Gọi hàm đăng nhập hoặc điều hướng tới trang khác sau khi đăng nhập thành công
+                // Gọi hàm đăng nhập với Firebase Authentication
+                signIn(username, password);
             }
         });
 
-        // Xử lý sự kiện khi nhấn vào "Sign Up"
+        // Xử lý sự kiện khi nhấn vào "Sign Up" để chuyển sang SignupActivity
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Điều hướng tới trang đăng ký hoặc xử lý logic đăng ký
-                Toast.makeText(SigninActivity.this, "Redirecting to Sign Up page...", Toast.LENGTH_SHORT).show();
-                // Ví dụ: startActivity(new Intent(SigninActivity.this, SignupActivity.class));
+                Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish(); // Kết thúc activity hiện tại nếu không cần quay lại
             }
         });
+    }
+
+    // Hàm đăng nhập với Firebase Authentication
+    private void signIn(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Đăng nhập thành công, điều hướng người dùng tới màn hình chính
+                        Toast.makeText(SigninActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
+                        // Ví dụ: startActivity(new Intent(SigninActivity.this, MainActivity.class));
+                    } else {
+                        // Đăng nhập thất bại, hiển thị lỗi
+                        Toast.makeText(SigninActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
