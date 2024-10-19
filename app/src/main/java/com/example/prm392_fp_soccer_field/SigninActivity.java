@@ -1,5 +1,7 @@
 package com.example.prm392_fp_soccer_field;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
