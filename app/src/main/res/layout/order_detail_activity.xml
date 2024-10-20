@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#3B7155"
+    android:orientation="vertical">
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Quay lại"
+        android:background="#009256"
+        app:cornerRadius="50dp"
+        android:layout_margin="5dp"
+        />
+    <TextView
+        android:id="@+id/tvTitleOrderDetailScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="THÔNG TIN CHI TIẾT"
+        android:textColor="#EDECEC"
+        android:textAlignment="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"/>
+
+    <ImageView
+        android:id="@+id/ivYardImageOrderDetail"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="5dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="SÂN BÓNG 7 NGƯỜI Ở PHÍA NGOÀI"
+            android:textColor="#EDECEC"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="10dp"
+            android:paddingLeft="5dp">
+
+            <Button
+                android:background="#22EBB0"
+                android:layout_width="135dp"
+                android:layout_height="50dp"
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#EDECEC"
+                android:text="PENDING"
+                android:allowClickWhenDisabled="true"/>
+
+            <TextView
+                android:id="@+id/tvDateBooking"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="DATE: 30/12/2024"
+                android:textStyle="bold"
+                android:textColor="#EDECEC"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#EDECEC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="START : 17:00:00"/>
+
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"
+
+        android:textColor="#EDECEC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="END      : 19:00:00"/>
+
+    <TableLayout
+        android:layout_margin="10dp"
+        android:stretchColumns="0,1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TableRow
+            android:background="#009256">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="DỊCH VỤ"
+                android:textColor="#EDECEC"
+                android:padding="8dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="SỐ LƯỢNG"
+                android:textColor="#EDECEC"
+                android:padding="8dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="ĐƠN GIÁ"
+                android:textColor="#EDECEC"
+                android:padding="8dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="THÀNH TIỀN"
+                android:textColor="#EDECEC"
+                android:padding="8dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textStyle="bold"
+                android:textColor="#3B7155"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Nước"
+                android:padding="8dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="2"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="20.000"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="40.000"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Trọng tài"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="2"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="100.000"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="100.000"
+                android:textColor="#3B7155"
+                android:padding="8dp"/>
+        </TableRow>
+    </TableLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/titleYardPriceOrderDetail"
+            android:textColor="#EDECEC"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            android:text="TIỀN SÂN   :  200.000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/titleTotalOrderDetail"
+            android:textColor="#9B0000"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="50dp"
+            android:textAlignment="textEnd"
+            android:text="TỔNG TIỀN:  340.000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/titlePaymentInOrderDetail"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textColor="#FA0000"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:text="ĐÃ THANH TOÁN: 170.000 VND \n CÒN LẠI               : 170.000 VND"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
