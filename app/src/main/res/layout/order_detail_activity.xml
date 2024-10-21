@@ -56,6 +56,7 @@
             android:paddingLeft="5dp">
 
             <Button
+                android:id="@+id/tvOrderStatusInOrderDetail"
                 android:background="#22EBB0"
                 android:layout_width="135dp"
                 android:layout_height="50dp"
@@ -66,7 +67,7 @@
                 android:allowClickWhenDisabled="true"/>
 
             <TextView
-                android:id="@+id/tvDateBooking"
+                android:id="@+id/tvDateBookingInOrderDetail"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text="DATE: 30/12/2024"
@@ -77,6 +78,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvStartTimeInOrderDetail"
         android:textStyle="bold"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
@@ -87,6 +89,7 @@
         android:text="START : 17:00:00"/>
 
     <TextView
+        android:id="@+id/tvEndTimeInOrderDetail"
         android:textStyle="bold"
         android:layout_marginLeft="30dp"
 

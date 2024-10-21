@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+    implementation (libs.material.v180)
+
     implementation (libs.firebase.auth)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -53,9 +55,15 @@ dependencies {
     implementation(libs.sdk.core)
     implementation(libs.sdk.auth)
     implementation(libs.sdk.openapi)
+    implementation(libs.support.annotations)
+    implementation(libs.protolite.well.known.types)
     annotationProcessor(libs.dagger.compiler)
     annotationProcessor(libs.dagger.android.processor)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation (libs.ormlite.core.v56)
+    implementation(libs.j256.ormlite.jdbc)
+    implementation( libs.ormlite.android.v56)
+    implementation(libs.mssql.jdbc)
 }

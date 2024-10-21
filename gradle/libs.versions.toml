@@ -8,6 +8,8 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
+materialVersion = "1.8.0"
+mssqlJdbc = "9.4.0.jre8"
 navigationFragment = "2.8.3"
 navigationUi = "2.8.2"
 daggerAndroidSupport = "2.52"
@@ -15,12 +17,19 @@ dagger = "2.52"
 daggerCompiler = "2.52"
 daggerAndroidProcessor = "2.52"
 glide = "5.0.0-rc01"
+ormliteAndroid = "5.6"
+ormliteCore = "5.1"
+ormliteCoreVersion = "5.6"
+ormliteJdbcVersion = "5.6"
 sdkCore = "4.2.0724"
 sdkAuth = "4.2.0724"
 sdkOpenapi = "4.2.0724"
+supportAnnotations = "28.0.0"
+protoliteWellKnownTypes = "18.0.0"
 
 [libraries]
 firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
+j256-ormlite-jdbc = { module = "com.j256.ormlite:ormlite-jdbc", version.ref = "ormliteJdbcVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -28,6 +37,8 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-v180 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+mssql-jdbc = { module = "com.microsoft.sqlserver:mssql-jdbc", version.ref = "mssqlJdbc" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version = "2.8.3" }
 dagger-android-support = { group = "com.google.dagger", name = "dagger-android-support", version.ref = "daggerAndroidSupport" }
@@ -35,9 +46,15 @@ dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" 
 dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "daggerCompiler" }
 dagger-android-processor = { group = "com.google.dagger", name = "dagger-android-processor", version.ref = "daggerAndroidProcessor" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+ormlite-android = { module = "com.j256.ormlite:ormlite-android", version.ref = "ormliteCore" }
+ormlite-android-v56 = { module = "com.j256.ormlite:ormlite-android", version.ref = "ormliteAndroid" }
+ormlite-core = { module = "com.j256.ormlite:ormlite-core", version.ref = "ormliteCore" }
+ormlite-core-v56 = { module = "com.j256.ormlite:ormlite-core", version.ref = "ormliteCoreVersion" }
 sdk-core = { group = "me.zalo", name = "sdk-core", version.ref = "sdkCore" }
 sdk-auth = { group = "me.zalo", name = "sdk-auth", version.ref = "sdkAuth" }
 sdk-openapi = { group = "me.zalo", name = "sdk-openapi", version.ref = "sdkOpenapi" }
+support-annotations = { group = "com.android.support", name = "support-annotations", version.ref = "supportAnnotations" }
+protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
