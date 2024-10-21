@@ -12,31 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PRM392_FP_Soccer_Field"
         tools:targetApi="31">
+
+        <!-- PaymentActivity sẽ là activity đầu tiên được hiển thị -->
         <activity
             android:name=".PaymentActivity"
-            android:exported="false"
-            android:theme="@style/Theme.PRM392_FP_Soccer_Field" />
+            android:exported="true"
+            android:theme="@style/Theme.PRM392_FP_Soccer_Field">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- SignupActivity -->
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
+
+        <!-- SigninActivity (không có intent-filter để khởi chạy mặc định nữa) -->
         <activity
             android:name=".SigninActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!-- MainActivity (không có intent-filter để khởi chạy mặc định nữa) -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
-
 </manifest>
