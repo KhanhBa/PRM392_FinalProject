@@ -12,4 +12,15 @@
     <color name="overlay_light_onPrimary">#FFFFFF</color>
     <color name= "overlay_light_primaryContainer">#FFDADB</color>
     <color name="overlay_light_onPrimaryContainer">#400008</color>
+
+    <color name="primary">#6200EE</color>
+    <!-- Text color for main headings and important information -->
+    <color name="text_primary">#212121</color>
+    <!-- Text color for secondary information (e.g., email, phone) -->
+    <color name="text_secondary">#757575</color>
+    <!-- Background color for the entire layout -->
+    <color name="background_light">#F5F5F5</color>
+    <!-- Green color for active status -->
+    <color name="red">#D32F2F</color>
+    <!-- White color for button text and backgrounds -->
 </resources>
