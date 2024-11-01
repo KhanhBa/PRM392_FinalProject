@@ -1,4 +1,4 @@
-package com.example.prm392_fp_soccer_field;
+package com.example.prm392_fp_soccer_field.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392_fp_soccer_field.Adapters.CarouselAdapter;
+import com.example.prm392_fp_soccer_field.Adapters.SoccerFieldAdapter;
+import com.example.prm392_fp_soccer_field.Models.SoccerField;
+import com.example.prm392_fp_soccer_field.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselSnapHelper;
@@ -32,7 +36,6 @@ public class HomeFragment extends Fragment {
     private void setupTopAppBar(View view) {
         MaterialToolbar topAppBar = view.findViewById(R.id.topAppBar);
         topAppBar.setOnMenuItemClickListener(item -> {
-            // xử lý sự kiện trên app bar
             return true;
         });
     }
@@ -54,7 +57,6 @@ public class HomeFragment extends Fragment {
     private void setupFieldList(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.field_list_recycler_view);
 
-        // Danh sách sân bóng
         List<SoccerField> fields = Arrays.asList(
                 new SoccerField("Camp Nou", "Barcelona, Tây Ban Nha", "$100/hour", R.drawable.placeholder_field, 4.8f),
                 new SoccerField("Wembley Stadium", "London, Anh", "$110/hour", R.drawable.placeholder_field, 4.7f),
@@ -64,7 +66,6 @@ public class HomeFragment extends Fragment {
         );
 
         SoccerFieldAdapter adapter = new SoccerFieldAdapter(fields, field -> {
-            // xử lý sự kiện detail (e.g., open detail view)
         });
         recyclerView.setAdapter(adapter);
     }

@@ -21,7 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignUp;
     private TextView tvSignIn;
     private ImageView ivEyePassword, ivEyeConfirm;
-    private FirebaseAuth mAuth; // Firebase Authentication instance
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,13 +70,11 @@ public class SignupActivity extends AppCompatActivity {
                 } else if (!password.equals(confirmPassword)) {
                     Toast.makeText(SignupActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Thực hiện đăng ký Firebase
                     registerUser(email, password);
                 }
             }
         });
 
-        // Thay đổi trạng thái hiển thị mật khẩu
         ivEyePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +90,6 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    // Hàm để đăng ký người dùng với Firebase
     private void registerUser(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
@@ -101,7 +98,7 @@ public class SignupActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(SignupActivity.this, MainActivity.class); // Ví dụ: MainActivity là trang chính
+                        Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
@@ -111,7 +108,6 @@ public class SignupActivity extends AppCompatActivity {
                 });
     }
 
-    // Hàm để chuyển đổi hiển thị mật khẩu
     private void togglePasswordVisibility(EditText editText, ImageView imageView) {
         if (editText.getInputType() == (android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)) {
             editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);

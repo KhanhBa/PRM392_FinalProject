@@ -6,14 +6,13 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392_fp_soccer_field.Fragments.BookedFieldsFragment;
+import com.example.prm392_fp_soccer_field.Fragments.HomeFragment;
+import com.example.prm392_fp_soccer_field.Fragments.ProfileFragment;
+import com.example.prm392_fp_soccer_field.Fragments.ServiceFragment;
+import com.example.prm392_fp_soccer_field.Fragments.YardListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.carousel.CarouselLayoutManager;
-import com.google.android.material.carousel.CarouselSnapHelper;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,11 +38,15 @@ public class MainActivity extends AppCompatActivity {
                         if (itemId == R.id.nav_home) {
                             selectedFragment = new HomeFragment();
                         } else if (itemId == R.id.nav_search) {
-                            selectedFragment = new SearchFragment();
-                        } else if (itemId == R.id.nav_profile) {
+                            selectedFragment = new YardListFragment();
+                        } else if (itemId == R.id.nav_ordered) {
                             selectedFragment = new BookedFieldsFragment();
                         }
-
+                        else if(itemId == R.id.nav_profile){
+                            selectedFragment = new ProfileFragment();
+                        }else if(itemId == R.id.nav_services){
+                            selectedFragment = new ServiceFragment();
+                        }
                         if (selectedFragment != null) {
                             getSupportFragmentManager().beginTransaction()
                                     .replace(R.id.fragment_container, selectedFragment)
@@ -52,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
-        // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
+
 }
 
 android {
@@ -57,13 +58,14 @@ dependencies {
     implementation(libs.sdk.openapi)
     implementation(libs.support.annotations)
     implementation(libs.protolite.well.known.types)
+    implementation(libs.recyclerview)
     annotationProcessor(libs.dagger.compiler)
     annotationProcessor(libs.dagger.android.processor)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation (libs.ormlite.core.v56)
-    implementation(libs.j256.ormlite.jdbc)
-    implementation( libs.ormlite.android.v56)
-    implementation(libs.mssql.jdbc)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 }

@@ -1,6 +1,6 @@
-package com.example.prm392_fp_soccer_field;
+package com.example.prm392_fp_soccer_field.Models;
 
-public class BookedField {
+public class  BookedField {
     private String fieldName;
     private String date;
     private String time;

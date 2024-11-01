@@ -1,4 +1,4 @@
-package com.example.prm392_fp_soccer_field;
+package com.example.prm392_fp_soccer_field.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.prm392_fp_soccer_field.R;
+import com.example.prm392_fp_soccer_field.Models.SoccerField;
 
 import java.util.List;
 

@@ -1,127 +1,131 @@
 package com.example.prm392_fp_soccer_field.Models;
 
 import com.google.type.DateTime;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
 
-@DatabaseTable(tableName = "Order")
 public class Order {
-    @DatabaseField(columnName = "id",generatedId = true)
-    private int Id;
-    @DatabaseField(columnName = "create_date")
-    private Date CreatedDate;
-    @DatabaseField(columnName = "update_date")
-    private Date UpdatedDate;
-    @DatabaseField(columnName = "payment_id")
-    private int PaymentId;
-    @DatabaseField(columnName = "yard_id")
-    private int YardId;
-    @DatabaseField(columnName = "customer_id")
-    private int CustomerId;
-    @DatabaseField(columnName = "start_time")
-    private DateTime StartedTime;
-    @DatabaseField(columnName = "end_time")
-    private DateTime EndedTime;
-    @DatabaseField(columnName = "duration")
-    private int Duration;
-    @DatabaseField(columnName = "status")
-    private  boolean Status;
+    private int id;
+    private String createdDate;
+    private String updatedDate;
+    private int paymentId;
+    private int yardId;
+    private int customerId;
+    private String startedTime;
+    private String endedTime;
+    private int duration;
+    private  boolean status;
+    private Yard yard;
+    private String bookingOrder;
 
-    public Order(int id, Date createdDate, Date updatedDate, int paymentId, int yardId, int customerId, DateTime startedTime, DateTime endedTime, int duration, boolean status) {
-        Id = id;
-        CreatedDate = createdDate;
-        UpdatedDate = updatedDate;
-        PaymentId = paymentId;
-        YardId = yardId;
-        CustomerId = customerId;
-        StartedTime = startedTime;
-        EndedTime = endedTime;
-        Duration = duration;
-        Status = status;
+    public String getBookingOrder() {
+        return bookingOrder;
     }
 
-    public Order() {
+    public void setBookingOrder(String bookingOrder) {
+        this.bookingOrder = bookingOrder;
+    }
+
+    public Yard getYard() {
+        return yard;
+    }
+
+    public void setYard(Yard yard) {
+        this.yard = yard;
+    }
+
+    public Order(int id, String createdDate, String updatedDate, int paymentId, int yardId, int customerId, String startedTime, String endedTime, int duration, boolean status, Yard yard, String bookingOrder) {
+        this.id = id;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.paymentId = paymentId;
+        this.yardId = yardId;
+        this.customerId = customerId;
+        this.startedTime = startedTime;
+        this.endedTime = endedTime;
+        this.duration = duration;
+        this.status = status;
+        this.yard = yard;
+        this.bookingOrder = bookingOrder;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
-    public Date getCreatedDate() {
-        return CreatedDate;
+    public String getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        CreatedDate = createdDate;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getUpdatedDate() {
-        return UpdatedDate;
+    public String getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
-        UpdatedDate = updatedDate;
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public int getPaymentId() {
-        return PaymentId;
+        return paymentId;
     }
 
     public void setPaymentId(int paymentId) {
-        PaymentId = paymentId;
+        this.paymentId = paymentId;
     }
 
     public int getYardId() {
-        return YardId;
+        return yardId;
     }
 
     public void setYardId(int yardId) {
-        YardId = yardId;
+        this.yardId = yardId;
     }
 
     public int getCustomerId() {
-        return CustomerId;
+        return customerId;
     }
 
     public void setCustomerId(int customerId) {
-        CustomerId = customerId;
+        this.customerId = customerId;
     }
 
-    public DateTime getStartedTime() {
-        return StartedTime;
+    public String getStartedTime() {
+        return startedTime;
     }
 
-    public void setStartedTime(DateTime startedTime) {
-        StartedTime = startedTime;
+    public void setStartedTime(String startedTime) {
+        this.startedTime = startedTime;
     }
 
-    public DateTime getEndedTime() {
-        return EndedTime;
+    public String getEndedTime() {
+        return endedTime;
     }
 
-    public void setEndedTime(DateTime endedTime) {
-        EndedTime = endedTime;
+    public void setEndedTime(String endedTime) {
+        this.endedTime = endedTime;
     }
 
     public int getDuration() {
-        return Duration;
+        return duration;
     }
 
     public void setDuration(int duration) {
-        Duration = duration;
+        this.duration = duration;
     }
 
     public boolean isStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(boolean status) {
-        Status = status;
+        this.status = status;
     }
 }

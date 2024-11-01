@@ -6,6 +6,7 @@
     android:background="#3B7155"
     android:orientation="vertical">
     <Button
+
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Quay lại"

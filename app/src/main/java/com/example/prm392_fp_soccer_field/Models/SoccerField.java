@@ -1,4 +1,4 @@
-package com.example.prm392_fp_soccer_field;
+package com.example.prm392_fp_soccer_field.Models;
 
 public class SoccerField {
     private String name;
