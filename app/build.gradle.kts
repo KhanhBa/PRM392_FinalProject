@@ -68,4 +68,6 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 }

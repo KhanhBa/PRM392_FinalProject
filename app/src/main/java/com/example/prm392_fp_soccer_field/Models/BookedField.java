@@ -1,6 +1,15 @@
 package com.example.prm392_fp_soccer_field.Models;
 
 public class  BookedField {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String fieldName;
     private String date;
     private String time;

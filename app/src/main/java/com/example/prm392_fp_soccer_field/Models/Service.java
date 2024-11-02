@@ -1,6 +1,9 @@
 package com.example.prm392_fp_soccer_field.Models;
 
-public class Service {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Service implements Parcelable {
     private int id;
     private String name;
     private String description;
@@ -14,6 +17,40 @@ public class Service {
         this.img = img;
         this.price = price;
     }
+
+    protected Service(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        img = in.readString();
+        price = in.readDouble();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(img);
+        dest.writeDouble(price);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Service> CREATOR = new Creator<Service>() {
+        @Override
+        public Service createFromParcel(Parcel in) {
+            return new Service(in);
+        }
+
+        @Override
+        public Service[] newArray(int size) {
+            return new Service[size];
+        }
+    };
 
     public int getId() {
         return id;

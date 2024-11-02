@@ -1,6 +1,9 @@
 package com.example.prm392_fp_soccer_field;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,11 +32,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class YardDetailActivity  extends AppCompatActivity {
-    private Button btnShowDatePicker, btnBack;
+    private Button btnShowDatePicker, btnBookYard;
     private DatePicker datePicker;
     private ImageView ivYardImage;
     private TextView tvSelectedDate, tvNameInYardDetail, tvPriceInYardDetail, tvDescriptionInYardDetail, tvStatusInYardDetail;
     private Yard yard;
+    String date;
     private ListView recyclerViewTimeSlots;
     private AvailableAdapter slotAdapter;
     private List<AvailableSlot> slots;
@@ -42,7 +46,7 @@ public class YardDetailActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_yard_activity);
         init();
-
+        createNotificationChannel();
         Intent intent = getIntent();
         int yardId =  intent.getIntExtra("yard", 0);
 
@@ -64,7 +68,6 @@ public class YardDetailActivity  extends AppCompatActivity {
         btnBackInYardDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(YardDetailActivity.this, "Oke", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -75,9 +78,24 @@ public class YardDetailActivity  extends AppCompatActivity {
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                 tvSelectedDate.setText("Ngày đã chọn: " + selectedDate);
-                String upDate = year +"-" + (monthOfYear+1) +"-" + dayOfMonth;
+
+                String upDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth);
+                date = upDate;
+
                 CallAvailableSlotApi(upDate);
             }
+
+        });
+
+        btnBookYard.setOnClickListener(v -> {
+            if(date==null || date ==""){
+                Toast.makeText(this, "Cần chọn ngày để đặt sân", Toast.LENGTH_SHORT);
+                return;
+            }
+            Intent newIntent = new Intent(YardDetailActivity.this,BookActivity.class);
+            newIntent.putExtra("yard", yard);
+            newIntent.putExtra("date", date);
+            startActivity(newIntent);
         });
     }
     private void CallAvailableSlotApi(String day){
@@ -105,6 +123,7 @@ public class YardDetailActivity  extends AppCompatActivity {
         });
     }
     public void init(){
+        btnBookYard = findViewById(R.id.btnBookYard);
         tvNameInYardDetail = findViewById(R.id.tvNameInYardDetail);
         tvPriceInYardDetail = findViewById(R.id.tvPriceInYardDetail);
         tvDescriptionInYardDetail = findViewById(R.id.tvDescriptionInYardDetail);
@@ -148,5 +167,17 @@ public class YardDetailActivity  extends AppCompatActivity {
             }
 
         });
+    }
+    public void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "My Channel";
+            String description = "Channel for my notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("my_channel_id", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

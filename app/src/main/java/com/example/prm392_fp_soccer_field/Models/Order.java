@@ -1,53 +1,76 @@
 package com.example.prm392_fp_soccer_field.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.google.type.DateTime;
 
 import java.util.Date;
 
-public class Order {
+public class Order implements Parcelable {
     private int id;
     private String createdDate;
     private String updatedDate;
-    private int paymentId;
+    private int slotId;
     private int yardId;
     private int customerId;
-    private String startedTime;
-    private String endedTime;
+    private double totalPrice;
+    private String startTime;
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    private String endTime;
     private int duration;
-    private  boolean status;
-    private Yard yard;
-    private String bookingOrder;
+    private String status;
+    private String bookingDate;
 
-    public String getBookingOrder() {
-        return bookingOrder;
-    }
-
-    public void setBookingOrder(String bookingOrder) {
-        this.bookingOrder = bookingOrder;
-    }
-
-    public Yard getYard() {
-        return yard;
-    }
-
-    public void setYard(Yard yard) {
-        this.yard = yard;
-    }
-
-    public Order(int id, String createdDate, String updatedDate, int paymentId, int yardId, int customerId, String startedTime, String endedTime, int duration, boolean status, Yard yard, String bookingOrder) {
+    public Order(int id, String createdDate, String updatedDate, int slotId, int yardId, int customerId, String startTime, String endTime, int duration, String status, String bookingDate) {
         this.id = id;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
-        this.paymentId = paymentId;
+        this.slotId = slotId;
         this.yardId = yardId;
         this.customerId = customerId;
-        this.startedTime = startedTime;
-        this.endedTime = endedTime;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.duration = duration;
         this.status = status;
-        this.yard = yard;
-        this.bookingOrder = bookingOrder;
+        this.bookingDate = bookingDate;
     }
+
+    protected Order(Parcel in) {
+        id = in.readInt();
+        createdDate = in.readString();
+        updatedDate = in.readString();
+        slotId = in.readInt();
+        yardId = in.readInt();
+        customerId = in.readInt();
+        startTime = in.readString();
+        endTime = in.readString();
+        duration = in.readInt();
+        status = in.readString();
+        bookingDate = in.readString();
+    }
+
+    public static final Creator<Order> CREATOR = new Creator<Order>() {
+        @Override
+        public Order createFromParcel(Parcel in) {
+            return new Order(in);
+        }
+
+        @Override
+        public Order[] newArray(int size) {
+            return new Order[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -73,12 +96,12 @@ public class Order {
         this.updatedDate = updatedDate;
     }
 
-    public int getPaymentId() {
-        return paymentId;
+    public int getSlotId() {
+        return slotId;
     }
 
-    public void setPaymentId(int paymentId) {
-        this.paymentId = paymentId;
+    public void setSlotId(int slotId) {
+        this.slotId = slotId;
     }
 
     public int getYardId() {
@@ -97,20 +120,20 @@ public class Order {
         this.customerId = customerId;
     }
 
-    public String getStartedTime() {
-        return startedTime;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStartedTime(String startedTime) {
-        this.startedTime = startedTime;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEndedTime() {
-        return endedTime;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEndedTime(String endedTime) {
-        this.endedTime = endedTime;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public int getDuration() {
@@ -121,11 +144,39 @@ public class Order {
         this.duration = duration;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(createdDate);
+        dest.writeString(updatedDate);
+        dest.writeInt(slotId);
+        dest.writeInt(yardId);
+        dest.writeInt(customerId);
+        dest.writeString(startTime);
+        dest.writeString(endTime);
+        dest.writeInt(duration);
+        dest.writeString(status);
+        dest.writeString(bookingDate);
     }
 }

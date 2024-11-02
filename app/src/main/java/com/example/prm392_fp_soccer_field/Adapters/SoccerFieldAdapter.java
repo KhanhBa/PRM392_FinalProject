@@ -44,9 +44,7 @@ public class SoccerFieldAdapter extends RecyclerView.Adapter<SoccerFieldAdapter.
         holder.fieldLocation.setText(field.getLocation());
         holder.fieldPrice.setText(field.getPrice());
         holder.fieldImage.setImageResource(field.getImageResourceId());
-        holder.fieldRating.setRating(field.getRating());
 
-        holder.bookButton.setOnClickListener(v -> listener.onFieldClick(field));
     }
 
     @Override
@@ -57,8 +55,6 @@ public class SoccerFieldAdapter extends RecyclerView.Adapter<SoccerFieldAdapter.
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView fieldImage;
         TextView fieldName, fieldLocation, fieldPrice;
-        Button bookButton;
-        RatingBar fieldRating;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -66,8 +62,6 @@ public class SoccerFieldAdapter extends RecyclerView.Adapter<SoccerFieldAdapter.
             fieldName = itemView.findViewById(R.id.field_name);
             fieldLocation = itemView.findViewById(R.id.field_location);
             fieldPrice = itemView.findViewById(R.id.field_price);
-            bookButton = itemView.findViewById(R.id.book_button);
-            fieldRating = itemView.findViewById(R.id.field_rating);
         }
     }
 }

@@ -1,6 +1,9 @@
 package com.example.prm392_fp_soccer_field.Models;
 
-public class AvailableSlot {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class AvailableSlot implements Parcelable {
     private int slotId;
     private String startTime;
     private String endTime;
@@ -18,6 +21,44 @@ public class AvailableSlot {
         this.status = status;
         this.orderId = orderId;
     }
+
+    protected AvailableSlot(Parcel in) {
+        slotId = in.readInt();
+        startTime = in.readString();
+        endTime = in.readString();
+        customerId = in.readInt();
+        customerName = in.readString();
+        status = in.readString();
+        orderId = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(slotId);
+        dest.writeString(startTime);
+        dest.writeString(endTime);
+        dest.writeInt(customerId);
+        dest.writeString(customerName);
+        dest.writeString(status);
+        dest.writeInt(orderId);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<AvailableSlot> CREATOR = new Creator<AvailableSlot>() {
+        @Override
+        public AvailableSlot createFromParcel(Parcel in) {
+            return new AvailableSlot(in);
+        }
+
+        @Override
+        public AvailableSlot[] newArray(int size) {
+            return new AvailableSlot[size];
+        }
+    };
 
     public int getSlotId() {
         return slotId;
