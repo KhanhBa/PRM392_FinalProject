@@ -8,13 +8,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.prm392_fp_soccer_field.APIs.CustomerService;
 import com.example.prm392_fp_soccer_field.APIs.OrderService;
 import com.example.prm392_fp_soccer_field.APIs.RetrofitClient;
+import com.example.prm392_fp_soccer_field.CallBack.CustomerCallback;
 import com.example.prm392_fp_soccer_field.Models.Customer;
 import com.example.prm392_fp_soccer_field.Models.SignUpDTO;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,7 +73,14 @@ public class SignupActivity extends AppCompatActivity {
                 } else if (!password.equals(confirmPassword)) {
                     Toast.makeText(SignupActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerUser(email, password);
+                    registerUser(email, password, new CustomerCallback() {
+                        @Override
+                        public void onCustomerFound(Customer customer) {
+                        }
+                        @Override
+                        public void onError(Throwable throwable) {
+                        }
+                    });
                 }
             }
         });
@@ -94,7 +100,7 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String email, String password) {
+    private void registerUser(String email, String password, CustomerCallback callback) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -108,17 +114,16 @@ public class SignupActivity extends AppCompatActivity {
                                 Customer result = response.body();
                                 if(result!=null){
                                     Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                                 Toast.makeText(SignupActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                             @Override
                             public void onFailure(Call<Customer> call, Throwable throwable) {
-
                             }
                         });
-                        Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
                     } else {
                         Toast.makeText(SignupActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
