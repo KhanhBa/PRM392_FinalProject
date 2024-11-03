@@ -26,7 +26,6 @@ public class Customer {
         this.createDate = createDate;
         this.updateDate = updateDate;
     }
-
     public int getId() {
         return id;
     }
@@ -107,3 +106,4 @@ public class Customer {
         this.updateDate = updateDate;
     }
 }
+

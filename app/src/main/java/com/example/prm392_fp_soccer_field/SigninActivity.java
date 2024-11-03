@@ -100,15 +100,13 @@ public class SigninActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-
-                        Toast.makeText(SigninActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
-
                         findUser(email, new CustomerCallback() {
                             @Override
                             public void onCustomerFound(Customer customer) {
                                 if (customer != null) {
                                     UserSessionManager sessionManager = new UserSessionManager(SigninActivity.this);
                                     sessionManager.saveLoginSession(customer);
+                                    Toast.makeText(SigninActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -116,7 +114,6 @@ public class SigninActivity extends AppCompatActivity {
                                     Toast.makeText(SigninActivity.this, "Customer not found.", Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                             @Override
                             public void onError(Throwable throwable) {
                                 Toast.makeText(SigninActivity.this, "Error retrieving customer data: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();

@@ -12,17 +12,25 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.prm392_fp_soccer_field.APIs.CustomerService;
+import com.example.prm392_fp_soccer_field.APIs.OrderService;
+import com.example.prm392_fp_soccer_field.APIs.RetrofitClient;
+import com.example.prm392_fp_soccer_field.Models.Customer;
+import com.example.prm392_fp_soccer_field.Models.SignUpDTO;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SignupActivity extends AppCompatActivity {
 
-    private EditText edtEmail, edtUsername, edtPassword, edtConfirmPassword;
+    private EditText edtEmail, edtPassword, edtConfirmPassword;
     private Button btnSignUp;
     private TextView tvSignIn;
     private ImageView ivEyePassword, ivEyeConfirm;
     private FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +38,6 @@ public class SignupActivity extends AppCompatActivity {
 
         // Khởi tạo các view
         edtEmail = findViewById(R.id.edtEmail);
-        edtUsername = findViewById(R.id.edtUsername2);
         edtPassword = findViewById(R.id.edtPassword2);
         edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
         btnSignUp = findViewById(R.id.btnSignIn); // Thay đổi nếu cần
@@ -56,14 +63,11 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = edtEmail.getText().toString().trim();
-                String username = edtUsername.getText().toString().trim();
                 String password = edtPassword.getText().toString();
                 String confirmPassword = edtConfirmPassword.getText().toString();
 
                 // Kiểm tra thông tin đầu vào
-                if (username.isEmpty()) {
-                    Toast.makeText(SignupActivity.this, "Please enter a valid username", Toast.LENGTH_SHORT).show();
-                } else if (email.isEmpty()) {
+                if (email.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
                 } else if (password.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Please enter a password", Toast.LENGTH_SHORT).show();
@@ -94,15 +98,28 @@ public class SignupActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                        SignUpDTO dto = new SignUpDTO(email,password);
+                        CustomerService apiService = RetrofitClient.getClient().create(CustomerService.class);
+                        Call<Customer> call = apiService.SignUp(dto);
+                        call.enqueue(new Callback<Customer>() {
+                            @Override
+                            public void onResponse(Call<Customer> call, Response<Customer> response) {
+                                Customer result = response.body();
+                                if(result!=null){
+                                    Toast.makeText(SignupActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                                }
+                                Toast.makeText(SignupActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                            @Override
+                            public void onFailure(Call<Customer> call, Throwable throwable) {
 
+                            }
+                        });
                         Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
-
                         Toast.makeText(SignupActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

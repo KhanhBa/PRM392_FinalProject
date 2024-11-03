@@ -53,8 +53,6 @@ public class OrderDetailActivity extends Activity {
         if(orderId!=-1){
             CallOrderApi(orderId);
             setupOrderDetails(orderId);
-
-
         }
 
         btnBackInOrderDetail.setOnClickListener(v->finish());
